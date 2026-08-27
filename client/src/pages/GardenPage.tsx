@@ -380,7 +380,7 @@ export const GardenPage: React.FC = () => {
           </h1>
 
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            A tiny place where your plants grow with you 🌱
+            Wateerr dem thirstyy plantss
           </p>
         </div>
 
@@ -423,12 +423,7 @@ export const GardenPage: React.FC = () => {
         <div><span className="text-[10px] uppercase font-bold text-slate-500">Garden ambience</span><p className="font-serif font-semibold text-slate-900 dark:text-white mt-1">{isNight ? '🌙 Night garden' : '☀️ Day garden'} · {weather}</p></div>
         <span className="text-xs text-slate-500">{isNight ? 'The flowers are resting.' : 'A good time to tend the beds.'}</span>
       </Card>
-      <PerformancePanel title="Garden performance report" subtitle="Growth and care progress from your planted beds." metrics={[
-        { label: 'Growth XP', value: gardenXp, detail: `level ${gardenLevel}`, tone: 'emerald' },
-        { label: 'Plants', value: plants.length, detail: 'currently planted', tone: 'sky' },
-        { label: 'Blooms', value: plants.filter((plant) => plant.stage === 4).length, detail: 'full-grown', tone: 'amber' },
-        { label: 'Details', value: decorations.length, detail: 'decorations placed', tone: 'violet' },
-      ]} />
+      
 
       <Card className="space-y-4">
         <div>
@@ -487,7 +482,7 @@ export const GardenPage: React.FC = () => {
 
               <p className="text-sm text-slate-500 mt-1">
                 Plant something and give this
-                little place some life.
+                little place huge ahh life.
               </p>
             </div>
 
@@ -503,11 +498,14 @@ export const GardenPage: React.FC = () => {
               Plant Your First Seed
             </Button>
 
-          </motion.div>
+            
 
+          </motion.div>
         ) : (
 
+          
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            
 
             {plants.map((plant) => {
               const emojis =
@@ -661,7 +659,7 @@ export const GardenPage: React.FC = () => {
 
                         <Sparkles className="w-3.5 h-3.5" />
 
-                        Fully Grown!
+                        Fully Grown chonky boiii or girll!
 
                       </div>
 
@@ -710,7 +708,7 @@ export const GardenPage: React.FC = () => {
         onClose={() =>
           setIsPlantModalOpen(false)
         }
-        title="Plant a New Seed"
+        title="Plant a New plant?(seed)"
       >
 
         <form
@@ -735,7 +733,7 @@ export const GardenPage: React.FC = () => {
             >
 
               <option value="SUNFLOWER">
-                🌻 Sunflower
+                🌻 Sunflower (YOUUU?)
               </option>
 
               <option value="MONSTERA">
@@ -826,10 +824,17 @@ export const GardenPage: React.FC = () => {
             </Button>
 
           </div>
+          
 
         </div>
 
       </Modal>
+      <PerformancePanel title="Garden performance report" subtitle="Growth and care progress from your planted beds." metrics={[
+        { label: 'Growth XP', value: gardenXp, detail: `level ${gardenLevel}`, tone: 'emerald' },
+        { label: 'Plants', value: plants.length, detail: 'currently planted', tone: 'sky' },
+        { label: 'Blooms', value: plants.filter((plant) => plant.stage === 4).length, detail: 'full-grown', tone: 'amber' },
+        { label: 'Details', value: decorations.length, detail: 'decorations placed', tone: 'violet' },
+      ]} />
 
     </div>
   );

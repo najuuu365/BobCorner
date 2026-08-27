@@ -60,7 +60,7 @@ export const FocusPage: React.FC = () => {
     if (mode === 'FOCUS') {
       notifyNori(
         'focused',
-        'I will stay focused with you. Let’s do this.'
+        'Oooh padippi'
       );
     }
 
@@ -75,7 +75,7 @@ export const FocusPage: React.FC = () => {
     if (mode === 'FOCUS') {
       notifyNori(
         'celebrating',
-        'Session complete! We did it!! 🎉'
+        'YAYYYYYYYYYY WEEEEEEEEEE MEOW 🎉'
       );
     }
 
@@ -122,7 +122,7 @@ const notifyNori = (
 
   notifyNori(
     'celebrating',
-    'You finished early?! That absolutely deserves a celebration!! 🎉'
+    'Yayyyyyy congooooooratsoo, adipoli baalu !! 🎉'
   );
 
   await handleCompleteSession(secondsLeft);
@@ -250,7 +250,7 @@ const notifyNori = (
           Focus & Pomodoro Timer
         </h1>
         <p className="text-xs text-slate-500 dark:text-slate-400">
-          Minimize distractions, immerse yourself in study, and track your deep work sessions.
+          No distractions......except Bob-
         </p>
       </div>
 
@@ -342,12 +342,12 @@ const notifyNori = (
       if (nextRunning) {
         notifyNori(
           'focused',
-          'Focus mode activated. I am watching over this session.'
+          'Focusss, I am monitoring youu racoon'
         );
       } else {
         notifyNori(
           'idle',
-          'Taking a little pause.'
+          'Hmmmmmmmmmmm'
         );
       }
     }

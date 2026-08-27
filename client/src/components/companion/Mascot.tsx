@@ -148,56 +148,55 @@ const ACCESSORY_NAMES: Record<string, string> = {
 };
 
 const IDLE_MESSAGES = [
-  'just hanging around.',
+  'I locked my key in the cupboard, can you help?',
   'tiny thoughts happening.',
-  'I wonder what you are doing.',
-  'still here. 💛',
-  'this is a nice little corner.',
-  'I was thinking about snacks.',
-  'should we do something fun later?',
-  'I like being here with you.',
-  'I have been supervising.',
-  'nothing suspicious is happening.',
-  'I am extremely busy doing nothing.',
+  'I wonder what you are doing hmmmmmm',
+  'still here? you\'re doing a gooooood joobbbbbbbb 💛',
+  'Will you unlock this cell?? I won\'t do anything',
+  'I was thinking about snackssss.',
+  'I like being here with youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu.',
+  'I have been supervising O_O .',
+  'nothing suspicious is happening ;).',
+  'I am extremely busy doing nothinggg, relatable?.',
 ];
 
 const HAPPY_MESSAGES = [
-  'hi!!',
-  'oh! hello!',
-  'you clicked me!',
-  'good to see you.',
+  'hieeeeeeeeeeeeeee!!',
+  'oh! hello Mark!',
+  'you punched meeeeeee! jk',
+  'habbbbb a greatttt dayyyyy sunshineeeeee.',
   'you remembered me!',
-  'hehe.',
-  'that was nice.',
-  'I like when you visit me.',
+  'Kinderr Joysss for youuu',
+  'You shall not',
+  'I like when you visit meeeee (Bob).',
 ];
 
 const CELEBRATION_MESSAGES = [
-  'WE DID IT!!',
-  'look at us go!!',
-  'tiny victory dance!!',
-  'that deserves a celebration.',
-  'I am extremely proud of us.',
+  'Wowww, I didnt know you could do Mathsss :O',
+  'look at me goooooo!!!!',
+  'aggressive victory dance wee!!',
+  'Celebrassoooooon toimeeeee.',
+  'I am proud of youuu.',
 ];
 
 const FOCUSED_MESSAGES = [
-  'I will keep you company quietly.',
-  'focus mode activated.',
+  'I will keep you company.... quietly.....',
+  'Dont be distractedd',
   'we have work to do.',
   'tiny serious face.',
 ];
 
 const HUNGRY_MESSAGES = [
   'I am thinking about snacks.',
-  'is it snack time yet?',
+  'Feed this starving you monster',
   'my stomach has opinions.',
-  'I could eat approximately everything.',
+  'Aaharam tharuuu ammeee ahhhhhhh.',
 ];
 
 const CONTEXT_MESSAGES: Record<string, string[]> = {
   garden: [
-    'the plants look happy.',
-    'please do not drown the plants.',
+    'the plants look happy, do you?',
+    'please do NOT drown the plants.',
   ],
   games: [
     'are we playing something?',
@@ -205,14 +204,13 @@ const CONTEXT_MESSAGES: Record<string, string[]> = {
   ],
   library: [
     'new book smell.',
-    'I like it when we read together.',
+    'I like it.',
   ],
   tycoon: [
     'our empire is getting suspiciously large.',
     'excellent business decision.',
   ],
   today: [
-    'what shall we tackle first?',
     'one little thing at a time.',
   ],
 };
@@ -444,6 +442,7 @@ export const Mascot: React.FC<MascotProps> = ({
   currentContext,
 }) => {
   const { showToast } = useToast();
+  const [isMegaNori, setIsMegaNori] = useState(false);
 
   const [companion, setCompanion] =
     useState<Companion | null>(null);
@@ -1603,7 +1602,7 @@ export const Mascot: React.FC<MascotProps> = ({
 
     react(
       'happy',
-      'ahhh. back to my favorite corner.',
+      'ahhh. back to my.....house?',
       {
         duration: 3500,
         bond: 1,
@@ -1741,6 +1740,33 @@ export const Mascot: React.FC<MascotProps> = ({
     );
   };
 }, []);
+
+
+useEffect(() => {
+  const timer = window.setTimeout(() => {
+    if (!isOpen && !isDragging) {
+      setIsMegaNori(true);
+
+      speak(
+        [
+          'BEHOLD',
+          'MMMMMM, BISCUITS *AGGRESSIVE SNIFFS*',
+          'Height, must build',
+          'I have become big, mother.',
+          'Quite excessive.',
+          'HELP. I cannot fit.',
+        ][Math.floor(Math.random() * 7)],
+        1200000 + Math.random() * 1200000
+      );
+
+      window.setTimeout(() => {
+        setIsMegaNori(false);
+      }, 5000);
+    }
+  }, 5000);
+
+  return () => window.clearTimeout(timer);
+}, [isOpen, isDragging]);
     
   if (!companion) {
     return null;
@@ -1766,7 +1792,15 @@ export const Mascot: React.FC<MascotProps> = ({
           width: NORI_SIZE,
           height: NORI_SIZE,
         }}
-      >
+          animate={{
+    scale: isMegaNori ? 6 : 1,
+  }}
+  transition={{
+    type: 'spring',
+    stiffness: 60,
+    damping: 15,
+  }}
+>
         <AnimatePresence>
           {(isOpen ||
             showMessage) && (

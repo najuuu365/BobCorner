@@ -49,9 +49,9 @@ export const DashboardPage: React.FC = () => {
       setTimeString(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
       const hour = now.getHours();
-      if (hour < 12) setGreeting('Good morning');
-      else if (hour < 18) setGreeting('Good afternoon');
-      else setGreeting('Good evening');
+      if (hour < 12) setGreeting('Goooood morninggggg');
+      else if (hour < 18) setGreeting('Gooood afternoonnnn');
+      else setGreeting('Goooood eveninggggg');
     };
 
     updateClock();
@@ -128,7 +128,7 @@ export const DashboardPage: React.FC = () => {
             {greeting}, {user?.name.split(' ')[0] || 'Friend'} <span className="text-2xl">☕</span>
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Welcome back to your personal sanctuary. What would you like to focus on today?
+            Welcome back to your bob's county. What do you wanna do?
           </p>
         </div>
 
@@ -321,7 +321,7 @@ export const DashboardPage: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Gamepad2 className="w-5 h-5 text-amber-400" />
                 <h3 className="font-serif font-semibold text-lg text-white">
-                  Mini Game Arcade
+                  Dont play gamesss
                 </h3>
               </div>
               <Button size="sm" variant="ghost" className="text-amber-300 hover:text-white" onClick={() => navigate('/games')}>
@@ -338,7 +338,7 @@ export const DashboardPage: React.FC = () => {
                   Literary 2048
                 </span>
                 <p className="text-sm font-medium text-slate-200">
-                  Merge Page → Chapter → Novel → Grand Library!
+                  2048 but.... books????
                 </p>
               </div>
 
@@ -347,10 +347,10 @@ export const DashboardPage: React.FC = () => {
                 className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 hover:border-amber-500/50 cursor-pointer transition-all hover:scale-[1.02]"
               >
                 <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider block mb-1">
-                  Word Sleuth
+                  Reaction Test
                 </span>
                 <p className="text-sm font-medium text-slate-200">
-                  Decode famous book quotes & emoji clues.
+                  Are you an F1 Driver?
                 </p>
               </div>
             </div>

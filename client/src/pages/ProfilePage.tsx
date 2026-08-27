@@ -91,10 +91,10 @@ export const ProfilePage: React.FC = () => {
     const url = URL.createObjectURL(new Blob([backup], { type: 'application/json' }));
     const link = document.createElement('a');
     link.href = url;
-    link.download = `haven-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    link.download = `Progress-data-backup-${new Date().toISOString().slice(0, 10)}.json`;
     link.click();
     URL.revokeObjectURL(url);
-    showToast('Your Haven backup is ready.', 'success');
+    showToast('Your Data backup is ready.', 'success');
   };
 
   const handleImport = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +104,7 @@ export const ProfilePage: React.FC = () => {
     setRestoring(true);
     try {
       await importHavenData(file);
-      showToast('Backup restored. Reloading Haven...', 'success');
+      showToast('Backup restored. Reloading Prison...', 'success');
       window.location.reload();
     } catch (error) {
       showToast(error instanceof Error ? error.message : 'Unable to restore backup.', 'error');
@@ -114,7 +114,7 @@ export const ProfilePage: React.FC = () => {
   };
 
   const handleReset = async () => {
-    if (!window.confirm('Delete all Haven data from this browser? This cannot be undone.')) return;
+    if (!window.confirm('Delete all prison data from this browser? This cannot be undone.')) return;
     await resetHavenData();
     window.location.reload();
   };
@@ -128,8 +128,8 @@ export const ProfilePage: React.FC = () => {
     const enabled = permission === 'granted';
     setNotifications(enabled);
     localStorage.setItem('haven_notifications', String(enabled));
-    if (enabled) new Notification('Haven is ready', { body: 'Your quiet workspace will be here when you need it.' });
-    showToast(enabled ? 'Haven reminders enabled.' : 'Haven reminders remain disabled.', enabled ? 'success' : 'info');
+    if (enabled) new Notification('Prison is ready', { body: 'Your quiet workspace will be here when you need it.' });
+    showToast(enabled ? 'Prison reminders enabled.' : 'Prison reminders remain disabled.', enabled ? 'success' : 'info');
   };
 
   return (
@@ -144,7 +144,7 @@ export const ProfilePage: React.FC = () => {
           </p>
         </div>
         <Button variant="danger" size="sm" onClick={handleReset} icon={<RotateCcw className="w-4 h-4" />}>
-          Reset Haven
+          Reset Jail Cell
         </Button>
       </div>
 
@@ -193,13 +193,7 @@ export const ProfilePage: React.FC = () => {
             </div>
           </Card>
 
-          <PerformancePanel title="Final performance report" subtitle="Your complete local Haven snapshot." metrics={[
-            { label: 'Level', value: stats.progress.level, detail: `${stats.progress.xp} XP`, tone: 'amber' },
-            { label: 'Streak', value: `${stats.progress.currentStreak}d`, detail: `best ${stats.progress.longestStreak}d`, tone: 'rose' },
-            { label: 'Focus', value: `${stats.focusMinutes}m`, detail: 'total minutes', tone: 'sky' },
-            { label: 'Completed', value: stats.completedTasks + stats.booksFinished, detail: 'tasks and books', tone: 'emerald' },
-            { label: 'Journal', value: journalEntries, detail: 'reading reflections', tone: 'violet' },
-          ]} />
+          
 
           <Card className="space-y-3">
             <div><h3 className="font-serif font-semibold text-base text-slate-900 dark:text-white">Activity timeline</h3><p className="text-xs text-slate-500 mt-1">Your recent Haven actions, stored locally for the long term.</p></div>
@@ -303,15 +297,22 @@ export const ProfilePage: React.FC = () => {
             </div>
           </Card>
 
+          <PerformancePanel title="Final performance report" subtitle="Your complete local Jail snapshot." metrics={[
+            { label: 'Level', value: stats.progress.level, detail: `${stats.progress.xp} XP`, tone: 'amber' },
+            { label: 'Streak', value: `${stats.progress.currentStreak}d`, detail: `best ${stats.progress.longestStreak}d`, tone: 'rose' },
+            { label: 'Focus', value: `${stats.focusMinutes}m`, detail: 'total minutes', tone: 'sky' },
+            { label: 'Completed', value: stats.completedTasks + stats.booksFinished, detail: 'tasks and books', tone: 'emerald' },
+            { label: 'Journal', value: journalEntries, detail: 'reading reflections', tone: 'violet' },
+          ]} />
           <Card className="space-y-4">
             <div>
-              <h3 className="font-serif font-semibold text-base text-slate-900 dark:text-white">Your Haven data</h3>
+              <h3 className="font-serif font-semibold text-base text-slate-900 dark:text-white">Your Prison data</h3>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Keep a portable copy of your local profile, library, garden, games, and progress.</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Button variant="secondary" size="sm" onClick={handleExport} icon={<Download className="w-4 h-4" />}>Export backup</Button>
               <Button variant="secondary" size="sm" onClick={() => importInput.current?.click()} disabled={restoring} icon={<Upload className="w-4 h-4" />}>{restoring ? 'Restoring...' : 'Import backup'}</Button>
-              <Button variant="danger" size="sm" onClick={handleReset}>Reset Haven</Button>
+              <Button variant="danger" size="sm" onClick={handleReset}>Reset Jail</Button>
               <input ref={importInput} type="file" accept="application/json" onChange={handleImport} className="hidden" />
             </div>
             <button onClick={handleNotifications} className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300 hover:text-amber-700 dark:hover:text-amber-300">

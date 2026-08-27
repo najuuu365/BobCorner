@@ -139,6 +139,49 @@ export const EpubReader: React.FC<EpubReaderProps> = ({
 
         renditionRef.current = rendition;
 
+        rendition.on('rendered', (_section:any, view:any) => {
+  const document = view.document;
+
+  let startX = 0;
+  let startY = 0;
+
+  document.addEventListener(
+    'touchstart',
+    (event:any) => {
+      const touch = event.touches[0];
+
+      startX = touch.clientX;
+      startY = touch.clientY;
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    'touchend',
+    (event:any) => {
+      const touch = event.changedTouches[0];
+
+      const deltaX = touch.clientX - startX;
+      const deltaY = touch.clientY - startY;
+
+      if (
+        Math.abs(deltaX) < 40 ||
+        Math.abs(deltaX) < Math.abs(deltaY)
+      ) {
+        return;
+      }
+
+      if (deltaX < 0) {
+        void rendition.next();
+      } else {
+        void rendition.prev();
+      }
+    },
+    { passive: true }
+  );
+});
+
+
         rendition.themes.register('light', {
           body: {
             background: '#ffffff !important',
@@ -249,7 +292,11 @@ export const EpubReader: React.FC<EpubReaderProps> = ({
       }
     };
 
-    loadBook();
+    loadBook(
+      
+    );
+
+    
 
     return () => {
       destroyed = true;
@@ -334,7 +381,7 @@ export const EpubReader: React.FC<EpubReaderProps> = ({
     }
   };
 
-  const handleTouchStart = (
+ const handleTouchStart = (
   event: React.TouchEvent<HTMLDivElement>
 ) => {
   const touch = event.touches[0];
@@ -343,6 +390,8 @@ export const EpubReader: React.FC<EpubReaderProps> = ({
     x: touch.clientX,
     y: touch.clientY,
   };
+
+  lastTouchAtRef.current = Date.now();
 };
 
 const handleTouchEnd = (
@@ -358,21 +407,20 @@ const handleTouchEnd = (
   const deltaX = touch.clientX - start.x;
   const deltaY = touch.clientY - start.y;
 
-  // Ignore vertical scrolling
+  const minSwipeDistance = 40;
+
   if (
-    Math.abs(deltaX) < 50 ||
+    Math.abs(deltaX) < minSwipeDistance ||
     Math.abs(deltaX) < Math.abs(deltaY)
   ) {
     return;
   }
 
-  // Swipe left = next page
+  lastTouchAtRef.current = Date.now();
+
   if (deltaX < 0) {
     changePage('next');
-  }
-
-  // Swipe right = previous page
-  if (deltaX > 0) {
+  } else {
     changePage('prev');
   }
 };
@@ -640,7 +688,7 @@ const handleTouchEnd = (
         onClick={handleReaderClick}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-        style={{ touchAction: 'pan-y' }}
+        style={{ touchAction: 'none' }}
       >
         {loading && !readerError && (
           <div className="absolute inset-0 z-30 flex items-center justify-center bg-white/80 text-sm text-slate-500 dark:bg-slate-950/80">

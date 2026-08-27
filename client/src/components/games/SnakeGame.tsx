@@ -136,6 +136,43 @@ export const SnakeGame: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
+const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+  const touch = e.touches[0];
+
+  touchStart.current = {
+    x: touch.clientX,
+    y: touch.clientY,
+  };
+};
+
+const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+  if (!touchStart.current) return;
+
+  const touch = e.changedTouches[0];
+
+  const deltaX = touch.clientX - touchStart.current.x;
+  const deltaY = touch.clientY - touchStart.current.y;
+
+  touchStart.current = null;
+
+  const minSwipeDistance = 30;
+
+  if (
+    Math.abs(deltaX) < minSwipeDistance &&
+    Math.abs(deltaY) < minSwipeDistance
+  ) {
+    return;
+  }
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    changeDirection(deltaX > 0 ? 'RIGHT' : 'LEFT');
+  } else {
+    changeDirection(deltaY > 0 ? 'DOWN' : 'UP');
+  }
+};
+
   return (
     <div className="space-y-6 max-w-md mx-auto">
       <div className="flex items-center justify-between">
@@ -161,7 +198,11 @@ export const SnakeGame: React.FC = () => {
       </div>
 
       {/* Grid Display Container */}
-      <div className="relative aspect-square p-2 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl overflow-hidden select-none">
+      <div
+  className="relative aspect-square p-2 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl overflow-hidden select-none touch-none"
+  onTouchStart={handleTouchStart}
+  onTouchEnd={handleTouchEnd}
+>
         <div className="w-full h-full grid grid-cols-16 gap-0.5" style={{ gridTemplateColumns: 'repeat(16, minmax(0, 1fr))' }}>
           {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, i) => {
             const x = i % GRID_SIZE;

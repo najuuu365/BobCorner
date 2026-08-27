@@ -58,11 +58,11 @@ type TycoonState = {
 
 const BUSINESS_TEMPLATES: Omit<Business, 'level' | 'automated'>[] = [
   { id: 'lemonade', name: 'Lemonade Stand', icon: '🍋', baseRate: 1, baseCost: 15, unlockAt: 0 },
-  { id: 'bookshop', name: 'Haven Bookshop', icon: '📚', baseRate: 6, baseCost: 120, unlockAt: 100 },
-  { id: 'cafe', name: 'Haven Café', icon: '☕', baseRate: 30, baseCost: 750, unlockAt: 600 },
+  { id: 'bookshop', name: 'Bobb Bookshop', icon: '📚', baseRate: 6, baseCost: 120, unlockAt: 100 },
+  { id: 'cafe', name: 'Bobb Café', icon: '☕', baseRate: 30, baseCost: 750, unlockAt: 600 },
   { id: 'flowerfarm', name: 'Flower Farm', icon: '🌻', baseRate: 150, baseCost: 4000, unlockAt: 3000 },
-  { id: 'arcade', name: 'Haven Arcade', icon: '🕹️', baseRate: 800, baseCost: 22000, unlockAt: 15000 },
-  { id: 'corporation', name: 'Haven Corporation', icon: '🏢', baseRate: 4000, baseCost: 120000, unlockAt: 80000 },
+  { id: 'arcade', name: 'Bobb Arcade', icon: '🕹️', baseRate: 800, baseCost: 22000, unlockAt: 15000 },
+  { id: 'corporation', name: 'Bobb Corporation', icon: '🏢', baseRate: 4000, baseCost: 120000, unlockAt: 80000 },
   { id: 'space', name: 'Space Mining', icon: '🚀', baseRate: 25000, baseCost: 750000, unlockAt: 500000 },
   { id: 'dreamarchive', name: 'Dream Archive', icon: '💭', baseRate: 150000, baseCost: 5000000, unlockAt: 3500000 },
   { id: 'moonresort', name: 'Moon Resort', icon: '🌙', baseRate: 900000, baseCost: 35000000, unlockAt: 25000000 },
@@ -85,7 +85,7 @@ const ACHIEVEMENT_TEMPLATES: Achievement[] = [
   { id: 'catvictim', title: 'Cat Victim', description: 'Get visited by the cat', icon: '😼', unlocked: false },
   { id: 'millionaire', title: 'Capitalist Nightmare', description: 'Earn 1,000,000 coins total', icon: '🤑', unlocked: false },
   { id: 'dimension', title: 'Across the Veil', description: 'Unlock a second dimension', icon: '🌀', unlocked: false },
-  { id: 'researcher', title: 'Haven Scholar', description: 'Complete every research project', icon: '🔬', unlocked: false },
+  { id: 'researcher', title: ' Boblar', description: 'Complete every research project', icon: '🔬', unlocked: false },
 ];
 
 const createDefaultState = (): TycoonState => ({
@@ -125,7 +125,7 @@ export const IdleTycoonGame: React.FC = () => {
   const [event, setEvent] = useState<EventType>(null);
   const [eventMultiplier, setEventMultiplier] = useState(1);
   const [eventSeconds, setEventSeconds] = useState(0);
-  const [message, setMessage] = useState('Build your Haven empire.');
+  const [message, setMessage] = useState('Bobbb is your Boss, work for him');
   const stateRef = useRef(state);
 
   useEffect(() => {
@@ -262,10 +262,10 @@ export const IdleTycoonGame: React.FC = () => {
 
       if (roll < 0.4) {
         setEvent('frog');
-        setMessage('🐸 A suspiciously rich frog has appeared!');
+        setMessage('🐸 A suspiciously rich thavala has appeared!');
       } else if (roll < 0.75) {
         setEvent('cat');
-        setMessage('😼 The Haven cat is plotting something...');
+        setMessage('😼 The Bob enemy cat is plotting something...');
       } else {
         setEvent('frenzy');
         setEventMultiplier(3);
@@ -452,7 +452,7 @@ export const IdleTycoonGame: React.FC = () => {
       lastCollectedAt: Date.now(),
     }));
 
-    setMessage(`✨ Haven rebuilt! You gained ${stars} Haven Star${stars === 1 ? '' : 's'}.`);
+    setMessage(`✨ Empire rebuilt! You gained ${stars} Bobbb Star${stars === 1 ? '' : 's'}.`);
   };
 
   const acceptOfflineReward = () => {
@@ -477,7 +477,7 @@ export const IdleTycoonGame: React.FC = () => {
             <div>
               <h2 className="text-2xl font-serif font-bold">While you were gone...</h2>
               <p className="text-sm text-slate-500 mt-2">
-                Your Haven empire kept working.
+                Your doppleganger kept working.
               </p>
             </div>
             <p className="text-4xl font-mono font-bold text-amber-500">
@@ -497,7 +497,7 @@ export const IdleTycoonGame: React.FC = () => {
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
             <div>
               <Badge variant="primary">Idle Empire</Badge>
-              <h2 className="text-3xl font-serif font-bold mt-2">Haven Tycoon</h2>
+              <h2 className="text-3xl font-serif font-bold mt-2">Bobbb Tycoon</h2>
               <p className="text-xs text-amber-100/70 mt-1">
                 Build increasingly ridiculous businesses and become unnecessarily rich.
               </p>
@@ -506,7 +506,7 @@ export const IdleTycoonGame: React.FC = () => {
             <div className="flex items-center gap-2 bg-white/10 rounded-2xl px-4 py-3">
               <Crown className="w-5 h-5 text-amber-300" />
               <div>
-                <p className="text-[10px] uppercase tracking-wider text-amber-100/60">Haven Stars</p>
+                <p className="text-[10px] uppercase tracking-wider text-amber-100/60">Bobbb Stars</p>
                 <p className="font-bold">{state.prestige} · +{state.prestige * 10}% forever</p>
               </div>
             </div>
@@ -517,7 +517,7 @@ export const IdleTycoonGame: React.FC = () => {
               {format(state.coins)}
             </p>
             <p className="text-xs uppercase tracking-[0.25em] text-amber-100/60 mt-2">
-              Haven Coins · +{format(productionRate)}/sec
+              Mark Coins · +{format(productionRate)}/sec
             </p>
           </div>
 
@@ -540,7 +540,7 @@ export const IdleTycoonGame: React.FC = () => {
               onClick={prestige}
             >
               <Sparkles className="w-4 h-4 mr-2" />
-              Rebuild Haven
+              Rebuild his hut
             </Button>
           </div>
 
@@ -682,12 +682,12 @@ export const IdleTycoonGame: React.FC = () => {
         })}
       </div>
 
-      {hiddenBusinessCount > 0 && <Card className="border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-900/40"><div className="flex items-center gap-3"><Lock className="w-5 h-5 text-slate-400" /><div><h3 className="font-serif font-semibold">More of Haven is ahead</h3><p className="text-xs text-slate-500 mt-1">{hiddenBusinessCount} later {hiddenBusinessCount === 1 ? 'business' : 'businesses'} unlock in order as your total earnings grow. Current next milestone: {format(visibleBusinesses[visibleBusinesses.length - 1]?.unlockAt || 0)} coins.</p></div></div></Card>}
+      {hiddenBusinessCount > 0 && <Card className="border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-900/40"><div className="flex items-center gap-3"><Lock className="w-5 h-5 text-slate-400" /><div><h3 className="font-serif font-semibold">More of his kingdomee is ahead</h3><p className="text-xs text-slate-500 mt-1">{hiddenBusinessCount} later {hiddenBusinessCount === 1 ? 'business' : 'businesses'} unlock in order as your total earnings grow. Current next milestone: {format(visibleBusinesses[visibleBusinesses.length - 1]?.unlockAt || 0)} coins.</p></div></div></Card>}
 
       <Card className="space-y-4">
         <div className="flex items-center gap-2">
           <Award className="w-5 h-5 text-amber-500" />
-          <h3 className="font-serif font-bold">Haven Achievements</h3>
+          <h3 className="font-serif font-bold">Your Achievements</h3>
           <span className="ml-auto text-xs text-slate-500">
             {state.achievements.filter((achievement) => achievement.unlocked).length}
             /{state.achievements.length}

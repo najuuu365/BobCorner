@@ -18,7 +18,7 @@ const openDatabase = (): Promise<IDBDatabase> => {
       request.result.createObjectStore(STORE_NAME, { keyPath: 'key' });
     };
     request.onsuccess = () => resolve(request.result);
-    request.onerror = () => reject(request.error ?? new Error('Unable to open Haven storage.'));
+    request.onerror = () => reject(request.error ?? new Error('Unable to open jail storage.'));
   });
 
   return databasePromise;

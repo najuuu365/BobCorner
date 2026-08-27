@@ -12,8 +12,8 @@ export const AuthPage: React.FC = () => {
 
   const [isRegister, setIsRegister] = useState(false);
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('demo@haven.app');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -49,7 +49,7 @@ export const AuthPage: React.FC = () => {
             <Compass className="w-6 h-6" />
           </div>
           <h1 className="font-serif font-bold text-3xl text-slate-900 dark:text-white">
-            Haven
+            Bobbb's prison  
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400">
             A personal corner of the internet for work, reading, & playful focus.
@@ -62,7 +62,7 @@ export const AuthPage: React.FC = () => {
             {isRegister && (
               <Input
                 label="Full Name"
-                placeholder="Alex Rivera"
+                placeholder="????"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 icon={<UserIcon className="w-4 h-4" />}
@@ -73,7 +73,7 @@ export const AuthPage: React.FC = () => {
             <Input
               label="Email Address"
               type="email"
-              placeholder="demo@haven.app"
+              placeholder="?????????"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               icon={<Mail className="w-4 h-4" />}
@@ -96,7 +96,7 @@ export const AuthPage: React.FC = () => {
           </form>
 
           {/* Quick Demo Login Option */}
-          {!isRegister && (
+          {/* {!isRegister && (
             <div className="pt-2 border-t border-haven-100 dark:border-slate-800">
               <Button
                 variant="outline"
@@ -110,7 +110,6 @@ export const AuthPage: React.FC = () => {
             </div>
           )}
 
-          {/* Toggle Register / Login */}
           <div className="text-center pt-2 text-xs text-slate-500">
             {isRegister ? (
               <span>
@@ -135,7 +134,7 @@ export const AuthPage: React.FC = () => {
                 </button>
               </span>
             )}
-          </div>
+          </div> */}
         </Card>
       </div>
     </div>

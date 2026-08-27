@@ -371,13 +371,7 @@ export const CollegePage: React.FC = () => {
         <Card className="bg-sky-50 dark:bg-sky-950/30"><span className="text-[10px] uppercase font-bold text-sky-700 dark:text-sky-300">Assignments</span><p className="text-2xl font-mono font-bold mt-1">{assignments.filter((assignment) => assignment.status === 'PENDING').length}</p></Card>
         <Card className="bg-emerald-50 dark:bg-emerald-950/30"><span className="text-[10px] uppercase font-bold text-emerald-700 dark:text-emerald-300">Current GPA</span><p className="text-2xl font-mono font-bold mt-1">{overallCgpa}</p></Card>
       </div>
-      <PerformancePanel title="Academic performance report" subtitle="Your current workload across the College Hub." metrics={[
-        { label: 'Completion', value: tasks.length ? `${Math.round((tasks.filter((task) => task.status === 'COMPLETED').length / tasks.length) * 100)}%` : '0%', detail: 'tasks complete', tone: 'emerald' },
-        { label: 'Subjects', value: subjects.length, detail: 'courses tracked', tone: 'sky' },
-        { label: 'Assignments', value: assignments.filter((assignment) => assignment.status === 'PENDING').length, detail: 'still pending', tone: 'rose' },
-        { label: 'GPA', value: overallCgpa, detail: `${totalCredits} credits`, tone: 'amber' },
-      ]} />
-      <LineChart title="College workload trends" subtitle="Seven-day task completion and assignment due dates." labels={trendLabels} series={[{ name: 'Tasks completed', values: completedTaskTrend, color: '#059669' }, { name: 'Assignments due', values: dueAssignmentTrend, color: '#e11d48' }]} />
+      
 
       {/* Tab Contents */}
       <AnimatePresence mode="wait">
@@ -879,6 +873,14 @@ export const CollegePage: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <PerformancePanel title="Academic performance report" subtitle="Your current workload across the College Hub." metrics={[
+        { label: 'Completion', value: tasks.length ? `${Math.round((tasks.filter((task) => task.status === 'COMPLETED').length / tasks.length) * 100)}%` : '0%', detail: 'tasks complete', tone: 'emerald' },
+        { label: 'Subjects', value: subjects.length, detail: 'courses tracked', tone: 'sky' },
+        { label: 'Assignments', value: assignments.filter((assignment) => assignment.status === 'PENDING').length, detail: 'still pending', tone: 'rose' },
+        { label: 'GPA', value: overallCgpa, detail: `${totalCredits} credits`, tone: 'amber' },
+      ]} />
+      <LineChart title="College workload trends" subtitle="Seven-day task completion and assignment due dates." labels={trendLabels} series={[{ name: 'Tasks completed', values: completedTaskTrend, color: '#059669' }, { name: 'Assignments due', values: dueAssignmentTrend, color: '#e11d48' }]} />
 
       {/* CREATE TASK MODAL */}
       <Modal isOpen={isTaskModalOpen} onClose={() => setIsTaskModalOpen(false)} title="Create New Task">

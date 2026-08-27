@@ -56,7 +56,7 @@ export const GamesPage: React.FC = () => {
       title: 'Cat Chase ',
       category: 'QUICK',
       icon: '🐱',
-      description: 'Put this darn cat in a chokehold',
+      description: 'Put the cat in a chokehold',
       badge: 'New & Playful',
     },
     {
@@ -64,17 +64,17 @@ export const GamesPage: React.FC = () => {
       title: 'Nerd 2048',
       category: 'PUZZLE',
       icon: '📚',
-      description: 'Combine tiles from Page → Chapter → x → y, wasn\'t 2048 nerd enough?',
+      description: 'Combine tiles from Page → Chapter → x → y, wasn\'t 2048 nerdy enough?',
       badge: 'Classic Favorite',
     },
-    {
-      key: 'wordle',
-      title: 'Word Sleuth',
-      category: 'BOOK',
-      icon: '🔤',
-      description: '5-letter literary word guessing puzzle with 6 attempts.',
-      badge: 'Word Game',
-    },
+    // {
+    //   key: 'wordle',
+    //   title: 'Word Sleuth',
+    //   category: 'BOOK',
+    //   icon: '🔤',
+    //   description: '5-letter literary word guessing puzzle with 6 attempts.',
+    //   badge: 'Word Game',
+    // },
     {
       key: 'memory',
       title: 'Memory Match',
@@ -83,20 +83,20 @@ export const GamesPage: React.FC = () => {
       description: 'Only the smartest genuisest can match more than 3 pairs',
       badge: 'Memory',
     },
-    {
-      key: 'guess_book',
-      title: 'Guess the Book',
-      category: 'BOOK',
-      icon: '📖',
-      description: 'Read plot, character, and setting clues to identify classic books.',
-      badge: 'Trivia',
-    },
+    // {
+    //   key: 'guess_book',
+    //   title: 'Guess the Book',
+    //   category: 'BOOK',
+    //   icon: '📖',
+    //   description: 'Read plot, character, and setting clues to identify classic books.',
+    //   badge: 'Trivia',
+    // },
     {
       key: 'reaction',
       title: 'Reaction Test',
       category: 'QUICK',
       icon: '⚡',
-      description: 'Can this granma do it? A goldfish would beat you',
+      description: 'Can you beat a goldenfish?',
       badge: 'Reflexes',
     },
     {
@@ -104,7 +104,7 @@ export const GamesPage: React.FC = () => {
       title: 'Modern Snake',
       category: 'HIGH_SCORE',
       icon: '🐍',
-      description: 'Play as my classmates!.',
+      description: 'Play as my classmates!',
       badge: 'Arcade',
     },
     {
@@ -118,10 +118,10 @@ export const GamesPage: React.FC = () => {
     },
     {
       key: 'idle_tycoon',
-      title: 'Haven Harvest Co.',
+      title: 'Bobbb Business.',
       category: 'HIGH_SCORE',
       icon: '🏭',
-      description: 'Build a tiny idle business that earns while you are away.',
+      description: 'Gettin bread homie',
       badge: 'Idle Tycoon',
     },
   ];
@@ -165,7 +165,7 @@ export const GamesPage: React.FC = () => {
               </Badge>
               <h2 className="text-3xl font-serif font-bold">Cat Chase Arcade 🐱</h2>
               <p className="text-xs text-amber-100 max-w-lg leading-relaxed">
-                Catch the mischievous cat across Easy, Medium, Hard, and Chaos difficulty modes! Watch out when you miss—the cat will troll you with speech bubbles!
+                
               </p>
               <Button variant="secondary" onClick={() => setActiveGame('cat_chase')} icon={<Sparkles className="w-4 h-4 text-amber-600" />}>
                 Play Cat Chase Now

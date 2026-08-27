@@ -217,12 +217,7 @@ export const TodayPage: React.FC = () => {
         </div>
       </Card>
 
-      <PerformancePanel title="Today's performance report" subtitle="A live snapshot from your local Haven activity." metrics={[
-        { label: 'Completion', value: `${taskProgress}%`, detail: `${completedTasksToday}/${tasks.length} tasks`, tone: 'emerald' },
-        { label: 'Focus time', value: `${focusMinutesToday}m`, detail: 'logged today', tone: 'amber' },
-        { label: 'Challenges', value: `${completedChallenges}/${challenges.length}`, detail: 'completed', tone: 'violet' },
-        { label: 'Attention', value: overdueTasks, detail: 'overdue tasks', tone: 'rose' },
-      ]} />
+      
 
       <Card className="space-y-3">
         <div className="flex items-center gap-2 text-slate-900 dark:text-white">
@@ -297,6 +292,13 @@ export const TodayPage: React.FC = () => {
             </div>
           </Card>
         </div>
+
+        <PerformancePanel title="Today's performance report" subtitle="A live snapshot from your local Prison activity." metrics={[
+        { label: 'Completion', value: `${taskProgress}%`, detail: `${completedTasksToday}/${tasks.length} tasks`, tone: 'emerald' },
+        { label: 'Focus time', value: `${focusMinutesToday}m`, detail: 'logged today', tone: 'amber' },
+        { label: 'Challenges', value: `${completedChallenges}/${challenges.length}`, detail: 'completed', tone: 'violet' },
+        { label: 'Attention', value: overdueTasks, detail: 'overdue tasks', tone: 'rose' },
+      ]} />
 
         {/* Daily Challenges & Reading */}
         <div className="space-y-6">

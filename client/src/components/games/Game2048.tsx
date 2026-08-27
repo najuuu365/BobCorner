@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
@@ -219,6 +219,45 @@ export const Game2048: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [move]);
 
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
+const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+  const touch = e.touches[0];
+
+  touchStart.current = {
+    x: touch.clientX,
+    y: touch.clientY,
+  };
+};
+
+const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+  if (!touchStart.current) return;
+
+  const touch = e.changedTouches[0];
+
+  const deltaX = touch.clientX - touchStart.current.x;
+  const deltaY = touch.clientY - touchStart.current.y;
+
+  touchStart.current = null;
+
+  const minSwipeDistance = 30;
+
+  if (
+    Math.abs(deltaX) < minSwipeDistance &&
+    Math.abs(deltaY) < minSwipeDistance
+  ) {
+    return;
+  }
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    move(deltaX > 0 ? 'RIGHT' : 'LEFT');
+  } else {
+    move(deltaY > 0 ? 'DOWN' : 'UP');
+  }
+};
+
+  
+
   return (
     <div className="space-y-6 max-w-md mx-auto">
       {/* Header controls */}
@@ -275,7 +314,11 @@ export const Game2048: React.FC = () => {
       </div>
 
       {/* 4x4 Grid Container */}
-      <div className="relative p-3 bg-slate-800/90 dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-700">
+     <div
+  className="relative p-3 bg-slate-800/90 dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-700 touch-none"
+  onTouchStart={handleTouchStart}
+  onTouchEnd={handleTouchEnd}
+>
         <div className="grid grid-cols-4 gap-2.5 aspect-square">
           {board.map((row, r) =>
             row.map((val, c) => {

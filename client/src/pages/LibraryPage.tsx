@@ -144,12 +144,7 @@ export const LibraryPage: React.FC = () => {
         <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden"><div className="h-full rounded-full bg-sky-500 transition-all" style={{ width: `${goalProgress}%` }} /></div>
         <div className="flex justify-between text-[11px] text-slate-500"><span>{pagesRead} pages read</span><span>{goalProgress}%</span></div>
       </Card>
-      <PerformancePanel title="Reading performance report" subtitle="Progress calculated from your local bookshelf." metrics={[
-        { label: 'Pages read', value: pagesRead, detail: `of ${readingGoal} goal`, tone: 'sky' },
-        { label: 'Finished', value: books.filter((book) => book.status === 'FINISHED').length, detail: 'books completed', tone: 'emerald' },
-        { label: 'Reading', value: books.filter((book) => book.status === 'READING').length, detail: 'in progress', tone: 'amber' },
-        { label: 'Favorites', value: books.filter((book) => book.favorite).length, detail: 'saved books', tone: 'rose' },
-      ]} />
+     
 
       {/* View Mode 1: Grid View */}
       {viewMode === 'grid' && (
@@ -240,6 +235,12 @@ export const LibraryPage: React.FC = () => {
           </Button>
         </div>
       )}
+       <PerformancePanel title="Reading performance report" subtitle="Progress calculated from your local bookshelf." metrics={[
+        { label: 'Pages read', value: pagesRead, detail: `of ${readingGoal} goal`, tone: 'sky' },
+        { label: 'Finished', value: books.filter((book) => book.status === 'FINISHED').length, detail: 'books completed', tone: 'emerald' },
+        { label: 'Reading', value: books.filter((book) => book.status === 'READING').length, detail: 'in progress', tone: 'amber' },
+        { label: 'Favorites', value: books.filter((book) => book.favorite).length, detail: 'saved books', tone: 'rose' },
+      ]} />
 
       {/* Quotes Showcase Drawer */}
       {quotes.length > 0 && (

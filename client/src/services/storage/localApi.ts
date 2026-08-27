@@ -110,8 +110,8 @@ export async function localRequest<T>(endpoint: string, options: RequestInit = {
     if (parts[1] === 'register' || parts[1] === 'login') {
       const users = (await storage.get<LocalUser[]>('users')) ?? [];
       const existing = users.find((user) => user.email === data.email);
-      const demoUser = data.email === 'demo@haven.app' && data.password === 'password123'
-        ? { id: id(), email: 'demo@haven.app', name: 'Haven Demo', theme: 'light', createdAt: now(), password: 'password123' }
+      const demoUser = data.email === 'bob@mark.com' && data.password === 'bobbb123'
+        ? { id: id(), email: 'bob@mark.com', name: 'Weeee', theme: 'light', createdAt: now(), password: 'bobbb123' }
         : undefined;
       const resolvedUser = existing ?? demoUser;
       if (parts[1] === 'login' && (!resolvedUser || resolvedUser.password !== data.password)) throw new Error('Invalid email or password.');
@@ -230,7 +230,7 @@ export async function localRequest<T>(endpoint: string, options: RequestInit = {
   }
 
   if (parts[0] === 'companion') {
-    const companion = (await storage.get<Companion>(`${userKey()}:companion`)) ?? { id: id(), userId: userKey(), name: 'Nori', type: 'CAT', equippedAccessory: 'none', unlockedAccessoriesJson: '["none"]', moodState: 'HAPPY' };
+    const companion = (await storage.get<Companion>(`${userKey()}:companion`)) ?? { id: id(), userId: userKey(), name: 'Bobbb ', type: 'CAT', equippedAccessory: 'none', unlockedAccessoriesJson: '["none"]', moodState: 'HAPPY' };
     if (method === 'PUT') return storage.set(`${userKey()}:companion`, { ...companion, ...data }) as Promise<T>;
     return companion as T;
   }

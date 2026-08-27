@@ -57,7 +57,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenSearch, onOpenRandomizer
           </div>
           <div>
             <span className="font-serif font-bold text-xl tracking-tight text-slate-900 dark:text-white block leading-tight">
-              Haven
+              Bobbb's prison
             </span>
             <span className="text-[10px] uppercase font-semibold text-haven-600 dark:text-amber-400 tracking-wider">
               {theme === 'soft' ? 'Soft Mode 🌸' : 'Personal Corner'}

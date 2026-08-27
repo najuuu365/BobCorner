@@ -9,9 +9,9 @@ interface OnboardingModalProps {
 }
 
 const STEPS = [
-  { icon: <Compass className="w-8 h-8 text-amber-600" />, title: 'Welcome to Haven', text: 'A quiet corner for your tasks, focus sessions, reading, games, and small daily wins.' },
+  { icon: <Compass className="w-8 h-8 text-amber-600" />, title: 'Welcome to Bob\'s Containment Cell', text: 'A quiet corner for your tasks, focus sessions, reading, games, and small daily wins.' },
   { icon: <Sprout className="w-8 h-8 text-emerald-600" />, title: 'Grow at your pace', text: 'Complete tasks, focus, tend your garden, and earn XP without pressure or noisy streak chasing.' },
-  { icon: <BookOpen className="w-8 h-8 text-sky-600" />, title: 'Make it yours', text: 'Add books, choose a theme, personalize Nori, and keep your local data backed up from Profile.' },
+  { icon: <BookOpen className="w-8 h-8 text-sky-600" />, title: 'Make it yours', text: 'Add books, choose a theme, personalize Bobbbb, and keep your local data backed up from Profile.' },
 ];
 
 export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onComplete }) => {
