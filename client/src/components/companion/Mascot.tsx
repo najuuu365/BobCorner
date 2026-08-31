@@ -1793,7 +1793,7 @@ useEffect(() => {
           height: NORI_SIZE,
         }}
           animate={{
-    scale: isMegaNori ? 6 : 1,
+    scale: isMegaNori ? 4 : 1,
   }}
   transition={{
     type: 'spring',

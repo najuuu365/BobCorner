@@ -52,7 +52,7 @@ export const AuthPage: React.FC = () => {
             Bobbb's prison  
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            A personal corner of the internet for work, reading, & playful focus.
+            A corner of the Bob's vast vast space for you.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export const AuthPage: React.FC = () => {
             />
 
             <Button variant="primary" type="submit" className="w-full py-3" disabled={loading}>
-              {loading ? 'Please wait...' : isRegister ? 'Create Account' : 'Sign In to Haven'}
+              {loading ? 'Please wait...' : isRegister ? 'Create Account' : 'Sign In'}
             </Button>
           </form>
 
